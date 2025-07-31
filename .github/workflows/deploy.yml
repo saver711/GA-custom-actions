@@ -64,5 +64,7 @@ jobs:
   information:
     runs-on: ubuntu-latest
     steps:
+      - name: Get code # This step is necessary to ensure the action has access to the codebase since the action is a local action in our repository. if we were using a remote action, this step would not be necessary.
+        uses: actions/checkout@v4
       - name: Run JS action
         uses: ./.github/custom-actions/deploy-s3-with-js
