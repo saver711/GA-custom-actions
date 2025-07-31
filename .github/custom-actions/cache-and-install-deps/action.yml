@@ -1,7 +1,7 @@
 name: "Cache and install dependencies"
 description: "Cache dependencies and install them"
 inputs:
-  caching: #⬅️⬅️
+  caching:
     description: "Whether to cache dependencies or not"
     required: false
     default: "true"
@@ -9,13 +9,13 @@ runs:
   using: composite # Required
   steps:
     - name: Cache dependencies
-      if: inputs.caching == 'true' #⬅️⬅️
+      if: inputs.caching == 'true'
       id: cache
       uses: actions/cache@v4
       with:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true' #⬅️⬅️
+      if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
       run: npm ci
       shell: bash # Required - Define shell whenever using run

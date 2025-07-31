@@ -1,0 +1,27 @@
+name: "Deploy to AWS S3 with JS"
+description: "Custom GitHub Action to deploy files to AWS S3 using JavaScript"
+# inputs:
+#   aws-access-key-id:
+#     description: "AWS Access Key ID"
+#     required: true
+#   aws-secret-access-key:
+#     description: "AWS Secret Access Key"
+#     required: true
+#   aws-region:
+#     description: "AWS Region"
+#     required: true
+#     default: "us-east-1"
+#   s3-bucket:
+#     description: "S3 Bucket Name"
+#     required: true
+#   source-dir:
+#     description: "Directory to upload"
+#     required: true
+runs:
+  using: "node20"
+  # pre: "pre.js" # Optional pre-action script
+  main: "main.js" # Path to the main JavaScript file that contains the action logic written in Node.js
+  # post: "post.js" # Optional post-action script
+branding:
+  icon: "upload-cloud"
+  color: "blue"
