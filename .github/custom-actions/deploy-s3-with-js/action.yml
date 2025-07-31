@@ -11,6 +11,9 @@ inputs:
   dist-folder:
     description: "Directory to upload"
     required: true
+outputs:
+  website-url:
+    description: "URL of the deployed website"
 runs:
   using: "node20"
   # pre: "pre.js" # Optional pre-action script

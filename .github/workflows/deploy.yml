@@ -65,7 +65,11 @@ jobs:
       - name: Output contents
         run: ls
       - name: Deploy site
+        id: deploy
         uses: ./.github/custom-actions/deploy-s3-with-js
         with:
           s3-bucket: ${{ env.s3_BUCKET }}
           dist-folder: ./dist
+      - name: Output website URL
+        run: |
+          echo "Website URL: ${{ steps.deploy.outputs.website-url }}"
