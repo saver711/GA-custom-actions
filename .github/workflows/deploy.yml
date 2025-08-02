@@ -68,8 +68,8 @@ jobs:
         id: deploy
         uses: ./.github/custom-actions/deploy-s3-with-docker
         with:
-          s3_bucket: ${{ env.s3_BUCKET }}
-          dist_folder: ./dist
+          s3-bucket: ${{ env.s3_BUCKET }}
+          dist-folder: ./dist
       - name: Output website URL
         run: |
           echo "Website URL: ${{ steps.deploy.outputs.website-url }}"

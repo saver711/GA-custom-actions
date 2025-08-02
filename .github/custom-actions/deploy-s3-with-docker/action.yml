@@ -1,14 +1,14 @@
 name: "Deploy to S3 with Docker"
 description: "Deploy files to an S3 bucket using Docker"
 inputs:
-  s3_bucket:
+  s3-bucket:
     description: "The S3 bucket to upload files to"
     required: true
-  aws_region:
+  aws-region:
     description: "The AWS region of the S3 bucket"
     required: true
     default: "us-east-1"
-  dist_folder:
+  dist-folder:
     description: "The folder containing files to upload"
     required: true
 outputs:

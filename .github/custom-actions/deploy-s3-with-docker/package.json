@@ -4,7 +4,7 @@
   "description": "GitHub Action to deploy to S3 using Docker",
   "main": "deployment.js",
   "dependencies": {
-    "aws-sdk": "^2.1430.0",
-    "mime-types": "^2.1.35"
+    "@actions/core": "^1.11.1",
+    "@actions/exec": "^1.1.1"
   }
 }
