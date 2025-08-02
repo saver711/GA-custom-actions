@@ -2,11 +2,16 @@ FROM node:20-alpine
 
 WORKDIR /github/workspace
 
+# Copy package files first for better caching
+COPY package*.json ./
+
 # Install dependencies
-COPY .github/custom-actions/deploy-s3-with-docker/package.json ./
 RUN npm install
 
-# Copy script
-COPY .github/custom-actions/deploy-s3-with-docker/deployment.js ./
+# Copy ALL files from action directory
+COPY . .
+
+# Verify file existence (optional but helpful for debugging)
+RUN ls -la
 
 ENTRYPOINT ["node", "deployment.js"]
