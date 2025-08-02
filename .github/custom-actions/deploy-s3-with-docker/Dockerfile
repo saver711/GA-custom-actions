@@ -1,13 +1,12 @@
 FROM node:20-alpine
 
-# Match GitHub's default working directory
 WORKDIR /github/workspace
 
-# Install deps
-COPY package.json ./
+# Install dependencies
+COPY .github/custom-actions/deploy-s3-with-docker/package.json ./
 RUN npm install
 
-# Copy all files from the action folder
-COPY . ./
+# Copy script
+COPY .github/custom-actions/deploy-s3-with-docker/deployment.js ./
 
 ENTRYPOINT ["node", "deployment.js"]
