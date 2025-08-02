@@ -1,17 +1,15 @@
 FROM node:20-alpine
 
-WORKDIR /github/workspace
-
-# Copy package files first for better caching
-COPY package*.json ./
+# Create protected directory for action files
+RUN mkdir -p /action
+WORKDIR /action
 
 # Install dependencies
+COPY package*.json ./
 RUN npm install
 
-# Copy ALL files from action directory
+# Copy action files to protected directory
 COPY . .
 
-# Verify file existence (optional but helpful for debugging)
-RUN ls -la
-
-ENTRYPOINT ["node", "deployment.js"]
+# Set entrypoint to use protected path
+ENTRYPOINT ["node", "/action/deployment.js"]

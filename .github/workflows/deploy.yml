@@ -64,11 +64,6 @@ jobs:
           path: ./dist
       - name: Output contents
         run: ls
-      - name: Verify files
-        run: |
-          ls -la ./.github/custom-actions/deploy-s3-with-docker
-          echo "Checking deployment.js exists:"
-          [ -f ./.github/custom-actions/deploy-s3-with-docker/deployment.js ] && echo "File exists" || echo "File missing"
       - name: Deploy site
         id: deploy
         uses: ./.github/custom-actions/deploy-s3-with-docker
