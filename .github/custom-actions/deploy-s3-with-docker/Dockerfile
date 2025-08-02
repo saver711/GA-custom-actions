@@ -1,11 +1,8 @@
 FROM node:16
 
-WORKDIR /app
+WORKDIR /github/workspace
 
-COPY package.json ./
-
+COPY . .
 RUN npm install
 
-COPY deployment.js ./
-
-CMD ["node", "deployment.js"]
+CMD ["node", "/github/workspace/deployment.js"]

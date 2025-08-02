@@ -1,0 +1,10 @@
+{
+    "name": "deploy-s3-docker-action",
+    "version": "1.0.0",
+    "description": "GitHub Action to deploy to S3 using Docker",
+    "main": "deployment.js",
+    "dependencies": {
+        "aws-sdk": "^2.1430.0",
+        "mime-types": "^2.1.35"
+    }
+}
