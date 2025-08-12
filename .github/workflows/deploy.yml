@@ -66,6 +66,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::047471738631:role/Github-s3-access
+          aws-region: us-east-1
       - name: Deploy site
         id: deploy
         uses: ./.github/custom-actions/deploy-s3-with-docker
