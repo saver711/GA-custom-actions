@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-# Install AWS CLI from Alpine repositories (v2.x)
+# Install AWS CLI from Alpine repositories
 RUN apk add --no-cache aws-cli
 
 WORKDIR /action

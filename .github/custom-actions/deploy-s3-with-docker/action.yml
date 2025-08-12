@@ -17,7 +17,3 @@ outputs:
 runs:
   using: "docker"
   image: "Dockerfile"
-  # args:
-  #   - ${{ inputs.s3-bucket }}
-  #   - ${{ inputs.aws-region }}
-  #   - ${{ inputs.dist-folder }}

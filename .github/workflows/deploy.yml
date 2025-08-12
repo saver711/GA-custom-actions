@@ -47,13 +47,11 @@ jobs:
           name: dist-files
           path: dist
   deploy:
+    permissions:
+      contents: read
+      id-token: write
     needs: build
     runs-on: ubuntu-latest
-    environment: production
-    env:
-      s3_BUCKET: ${{ secrets.S3_BUCKET }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # AWS Cli command in main.js will automatically look for (AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY) environment variables
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -64,11 +62,15 @@ jobs:
           path: ./dist
       - name: Output contents
         run: ls
+      - name: Get AWS Permissions
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::047471738631:role/Github-s3-access
       - name: Deploy site
         id: deploy
         uses: ./.github/custom-actions/deploy-s3-with-docker
         with:
-          s3-bucket: ${{ env.s3_BUCKET }}
+          s3-bucket: ${{ secrets.S3_BUCKET }}
           dist-folder: ./dist
       - name: Output website URL
         run: |
